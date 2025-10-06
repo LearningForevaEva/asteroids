@@ -3,8 +3,8 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+import sys
 
-# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 BLACK = (0, 0, 0)
 x = SCREEN_WIDTH / 2
 y = SCREEN_HEIGHT / 2
@@ -33,6 +33,10 @@ def main():
                 return
         screen.fill(BLACK)
         updatable.update(dt)
+        for rock in asteroids:
+            if rock.check_collisions(player):
+                print("Game over!")
+                sys.exit()
         for draw_able in drawable:
             draw_able.draw(screen)
         pygame.display.flip()
