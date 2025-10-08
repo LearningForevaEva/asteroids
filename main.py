@@ -40,6 +40,11 @@ def main():
             if rock.check_collisions(player):
                 print("Game over!")
                 sys.exit()
+            for shot in shots:
+                if rock.check_collisions(shot):
+                    rock.kill()
+                    shot.kill()
+                    break
         for draw_able in drawable:
             draw_able.draw(screen)
         pygame.display.flip()
