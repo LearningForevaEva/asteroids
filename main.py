@@ -42,8 +42,8 @@ def main():
                 sys.exit()
             for shot in shots:
                 if rock.check_collisions(shot):
-                    rock.kill()
                     shot.kill()
+                    rock.split()
                     break
         for draw_able in drawable:
             draw_able.draw(screen)
